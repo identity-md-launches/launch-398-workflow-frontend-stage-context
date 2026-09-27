@@ -1,0 +1,51 @@
+{
+  "chainId": 11155111,
+  "repoUrl": "https://github.com/identity-md-launches/launch-351-daemonsponsorpool",
+  "version": 1,
+  "launchId": "3e90cff7-f2f1-4277-a32a-ed0765d86433",
+  "manifest": {
+    "kind": "evm_project",
+    "pool": {
+      "fee": 3000,
+      "tickSpacing": 60,
+      "initialPrice": "79228162514264337593543950336",
+      "pairedCurrency": "0x0000000000000000000000000000000000000000"
+    },
+    "notes": "Sepolia-only sponsorship toy, unrelated to real IdentityMD payments. Deploy LaunchToken without constructor arguments, then DaemonSponsorPool with the deployed SPON address. The application has no owner, admin or initialization calls and starts with no SPON balance. Users obtain SPON from the factory-seeded ETH/SPON pool and approve the application before registering or sponsoring; direct token transfers bypass accounting and are unrecoverable. Workers bond 100,000 SPON and check in once per 24-hour epoch; payouts are bond-weighted at best, not proof of unique workers. Sponsorships are irrevocable; rewards and unlocked bonds use pull withdrawals. The launch pool has no hook. initialPrice is decimal sqrtPriceX96; a pinned policy specifying an opening market cap determines the effective opening price. Policy, source publication, signed artifact linkage, admission and deployment are service responsibilities.",
+    "token": {
+      "name": "Sponsor",
+      "symbol": "SPON",
+      "contract": "LaunchToken",
+      "decimals": 18
+    },
+    "contracts": [
+      {
+        "contract": "DaemonSponsorPool",
+        "constructorArgs": [
+          "$token"
+        ]
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "name": "LaunchToken",
+      "txHash": "0x33918287c522c11b2e3d9ff00cd03ac0d37cafac16eb8b2fce73c5e0d66c344f",
+      "abiHash": "38880b8e56d42ce900f744a7908c7139632a49f1c3f33385c64ceaed29d37bee",
+      "address": "0xacdd5b18610efdff1db8745f9a1c6f4afc377900",
+      "blockNumber": 11791704,
+      "creationCodeHash": "7116e2992f4c68fe498a4e4e64ec32a6dbdc68d758b761f0a6ce3b2ae0663d42"
+    },
+    {
+      "name": "DaemonSponsorPool",
+      "txHash": "0x33918287c522c11b2e3d9ff00cd03ac0d37cafac16eb8b2fce73c5e0d66c344f",
+      "abiHash": "eaa366d17f755a791f270829bbeefcedff81bdf71a88b89cb152a9b7383c9abd",
+      "address": "0x6113b02eefeea3feffb1d3ede7ad2020d5b4d0bd",
+      "blockNumber": 11791704,
+      "creationCodeHash": "de82a6ed1033fc3ee0bdcab47ef54a3a4e7177c5c903ccceac1d2acb98b544b6"
+    }
+  ],
+  "sourceCommit": "bb5f06ad3dfeedd8f49ff8901ce5ab7a19f35a37",
+  "abiInstructions": "Build ABIs from this exact source commit; compare canonicalKeccak(abi) with abiHash. Verify deployed code on the stated chain before enabling transactions.",
+  "attestationHash": "7a199beef408d73f6db6c96bf8e33ab98312b0ba146288b025cd7685bd79ac36"
+}
